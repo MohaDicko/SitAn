@@ -1,44 +1,9 @@
 import React from 'react';
-import Slider from "react-slick";
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
 import { Card, CardBody, Typography } from "@material-tailwind/react";
 
 export default function ListeProduit() {
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 4,
-    slidesToScroll: 1,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 1,
-          infinite: true,
-          dots: true
-        }
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1,
-          initialSlide: 2
-        }
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1
-        }
-      }
-    ]
-  };
-
   const produits = [
     {
       id: 1,
@@ -46,15 +11,32 @@ export default function ListeProduit() {
       description: "The place is close to Barceloneta Beach and bus stop just 2 min by walk and near to 'Naviglio' where you can enjoy the main night life in Barcelona.",
       imageUrl: "https://images.unsplash.com/photo-1540553016722-983e48a2cd10?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80"
     },
-    // Ajoutez plus de produits ici
+    {
+      id: 2,
+      title: "Data Science Bootcamp",
+      description: "A comprehensive bootcamp to learn data science and machine learning.",
+      imageUrl: "https://images.unsplash.com/photo-1517430816045-df4b7de01f17?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+    },
+    {
+      id: 3,
+      title: "Web Development Course",
+      description: "Learn to build modern web applications using React, Node.js, and more.",
+      imageUrl: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+    },
+    {
+      id: 4,
+      title: "Digital Marketing Workshop",
+      description: "Master the art of digital marketing with hands-on workshops.",
+      imageUrl: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+    }
   ];
 
   return (
     <div className="container mx-auto mt-6">
-      <Slider {...settings}>
+      <div className="flex flex-wrap -mx-4">
         {produits.map((produit) => (
-          <div key={produit.id} className="p-4">
-            <div className="relative flex flex-col text-gray-700 bg-white shadow-md bg-clip-border rounded-xl w-96">
+          <div key={produit.id} className="p-4 w-full md:w-1/2 lg:w-1/4">
+            <div className="relative flex flex-col text-gray-700 bg-white shadow-md bg-clip-border rounded-xl">
               <div className="relative h-56 mx-4 -mt-6 overflow-hidden text-white shadow-lg bg-clip-border rounded-xl bg-blue-gray-500 shadow-blue-gray-500/40">
                 <img
                   src={produit.imageUrl}
@@ -80,7 +62,7 @@ export default function ListeProduit() {
             </div>
           </div>
         ))}
-      </Slider>
+      </div>
     </div>
   );
 }
