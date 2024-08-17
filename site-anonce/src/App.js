@@ -7,7 +7,7 @@ import VendreBtn from "./components/layout/header/VendreBtn";
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
 import { Footer } from './components/Footer';
-import  ListeProduit from './components/ListeProduit';
+import  NouvelleAnnonce from './components/NouvelleAnnonce';
 import ListCategorie from './components/ListCategorie';
 
 export default function App() {
@@ -17,10 +17,15 @@ export default function App() {
   return (
     <>
       <TopNavbar />
+      <div className="w-full max-w-screen-xl mx-auto">
       <SearchBar />
       <VendreBtn />
       <ListCategorie />
-      <ListeProduit></ListeProduit>
+      <NouvelleAnnonce></NouvelleAnnonce>
+        </div>
+      
+
+     
       <Footer></Footer>
     </>
   );

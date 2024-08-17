@@ -7,7 +7,7 @@ import {
   
   export default function VendreBtn() {
     return (
-      <Card className="mt-3 w-full max-w-screen-lg mx-auto bg-brown-500">
+      <Card className="mt-3 w-full  bg-brown-500">
         <CardBody className="flex flex-col md:flex-row md:items-center gap-4 text-white">
           <div className="flex-1">
             <Typography variant="h5" color="white" className="mb-2 md:mb-0">

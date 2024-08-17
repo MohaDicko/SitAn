@@ -143,7 +143,7 @@ export function TopNavbar() {
             </div>
           </MobileNav>
         </Navbar>
-        <div className="mx-auto max-w-screen-lg py-3">
+        <div className="mx-auto max-w-screen-xl py-3">
           <Card className=" overflow-hidden">
             <img
               alt="nature"

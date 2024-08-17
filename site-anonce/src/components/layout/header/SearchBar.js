@@ -13,7 +13,7 @@ import {
 
 export default function SearchBar() {
   return ( 
-    <Card className="w-full max-w-screen-lg mx-auto">
+    <Card className="">
       <CardBody>
         <form className=" flex flex-col md:flex-row md:items-end gap-4">
           <div className="flex-1">
