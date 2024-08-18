@@ -9,6 +9,7 @@ import "slick-carousel/slick/slick-theme.css";
 import { Footer } from './components/Footer';
 import  NouvelleAnnonce from './components/NouvelleAnnonce';
 import ListCategorie from './components/ListCategorie';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 export default function App() {
   
@@ -16,16 +17,16 @@ export default function App() {
 
   return (
     <>
+    
       <TopNavbar />
       <div className="w-full max-w-screen-xl mx-auto">
+      <Router>
       <SearchBar />
       <VendreBtn />
       <ListCategorie />
       <NouvelleAnnonce></NouvelleAnnonce>
+      </Router>
         </div>
-      
-
-     
       <Footer></Footer>
     </>
   );
