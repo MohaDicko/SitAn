@@ -9,19 +9,19 @@ export default function ListCategorie() {
        
     const categories = [
       {
-        title: 'Immobilier', icon: (<HomeIcon className="h-12 w-12 text-blue-500 mb-4" />), link: '/Pages/ListCategoriePage'
+        title: 'Immobilier', icon: (<HomeIcon className="h-12 w-12 text-blue-500 mb-4" />), link: '/immobiliers'
       },
       {
-        title: 'Automobile', icon: (<TruckIcon className="h-12 w-12 text-green-500 mb-4" />), link: '/Pages/ListCategoriePage'
+        title: 'Automobile', icon: (<TruckIcon className="h-12 w-12 text-green-500 mb-4" />), link: '/list_categorie'
       },
       {
-        title: 'Electronique', icon: (<ComputerDesktopIcon className="h-12 w-12 text-yellow-500 mb-4" />), link: '/Pages/ListCategoriePage'
+        title: 'Electronique', icon: (<ComputerDesktopIcon className="h-12 w-12 text-yellow-500 mb-4" />), link: '/list_categorie'
       },
       {
-        title: 'Marche', icon: (<BuildingStorefrontIcon className="h-12 w-12 text-brown-500 mb-4" />), link: '/Pages/ListCategoriePage'
+        title: 'Marche', icon: (<BuildingStorefrontIcon className="h-12 w-12 text-brown-500 mb-4" />), link: '/list_categorie'
       },
       {
-        title: 'Travail', icon: (<BriefcaseIcon className="h-12 w-12 text-red-500 mb-4" />), link: '/Pages/ListCategoriePage'
+        title: 'Travail', icon: (<BriefcaseIcon className="h-12 w-12 text-red-500 mb-4" />), link: '/list_categorie'
       },
     ];
 

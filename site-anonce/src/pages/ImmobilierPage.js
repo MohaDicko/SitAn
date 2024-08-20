@@ -1,0 +1,41 @@
+
+import React from 'react';
+
+import FiltreCategorieImmobilier from '../components/FiltreCategorieImmobilier';
+import { useParams } from 'react-router-dom';
+import SearchBar from '../components/layout/header/SearchBar';
+import { Breadcrumbs } from '@material-tailwind/react';
+
+
+
+
+
+
+
+
+export default function ImmobilierPage() {
+  
+  let params = useParams();
+  console.log('immobiliers sous categorie',params.categorie); 
+
+  return (
+    <>
+      <SearchBar search_categorie={`ìmmobilier_${params.categorie ?? ''}`} />
+      <Breadcrumbs className="my-2">
+      <a href="/" className="opacity-60">
+        Accueil
+      </a>
+      <a href="/immobiliers" className={params.categorie ?  'opacity-60' : ''}>
+        Immobiliers
+      </a>
+      {params.categorie ? (
+          <a href={`/immobiliers/${params.categorie}`}>
+            {params.categorie}
+          </a>
+        ) : ''}
+    </Breadcrumbs>
+    <FiltreCategorieImmobilier></FiltreCategorieImmobilier>
+    
+    </>
+  );
+}

@@ -11,7 +11,7 @@ import {
   LockClosedIcon,
 } from "@heroicons/react/24/solid";
 
-export default function SearchBar() {
+export default function SearchBar({search_categorie}) {
   return ( 
     <Card className="">
       <CardBody>
@@ -27,6 +27,7 @@ export default function SearchBar() {
             <Input
               type="text"
               placeholder="Search"
+             
               className="!border-t-blue-gray-200 focus:!border-t-gray-900"
               labelProps={{
                 className: "before:content-none after:content-none",
@@ -43,10 +44,11 @@ export default function SearchBar() {
               Categories
             </Typography>
             <Input
-              maxLength={19}
+             
               icon={
                 <CreditCardIcon className="absolute left-0 h-4 w-4 text-blue-gray-300" />
               }
+              value={search_categorie}
               placeholder="Categories"
               className="!border-t-blue-gray-200 focus:!border-t-gray-900"
               labelProps={{

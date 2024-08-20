@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Typography } from "@material-tailwind/react";
 import Slider from "react-slick";
 import { Produit } from "./Produit";
-import FiltreDynamique from './FiltreDynamique'; // Assurez-vous que le chemin est correct
+ // Assurez-vous que le chemin est correct
 
 export default function NouvelleAnnonceListe({ produits, title }) {
   const [filters, setFilters] = useState({});
@@ -55,7 +55,7 @@ export default function NouvelleAnnonceListe({ produits, title }) {
 
   return (
     <div className="mb-6">
-      <FiltreDynamique category="immobilier" onFilter={handleFilter} />
+  
       <div className="flex justify-between items-center mb-2">
         <Typography variant="h5">{title}</Typography>
         <a className="hover:underline">
