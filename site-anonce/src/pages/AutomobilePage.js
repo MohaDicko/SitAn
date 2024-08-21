@@ -13,20 +13,20 @@ import ListeAnnonces from "../components/ListeAnnonces";
 
 export default function AutomobilePage() {
   let params = useParams();
-  console.log("immobiliers sous categorie", params.categorie);
+  console.log("automobile sous categorie", params.categorie);
 
   return (
     <>
-      <SearchBar search_categorie={`ìmmobilier_${params.categorie ?? ""}`} />
+      <SearchBar search_categorie={`automobile_${params.categorie ?? ""}`} />
       <Breadcrumbs className="my-2">
         <a href="/" className="opacity-60">
           Accueil
         </a>
-        <a href="/immobiliers" className={params.categorie ? "opacity-60" : ""}>
+        <a href="/automobile" className={params.categorie ? "opacity-60" : ""}>
           Immobiliers
         </a>
         {params.categorie ? (
-          <a href={`/immobiliers/${params.categorie}`}>{params.categorie}</a>
+          <a href={`/automobile/${params.categorie}`}>{params.categorie}</a>
         ) : (
           ""
         )}
