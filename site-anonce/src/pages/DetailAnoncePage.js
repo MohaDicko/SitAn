@@ -10,8 +10,8 @@ export function DetailAnnoncePage() {
         <a href="/" className="opacity-60">
           Accueil
         </a>
-        <a href="/immobiliers">
-          Immobiliers
+        <a href="/automobile">
+          Automobile
         </a>
        
      
