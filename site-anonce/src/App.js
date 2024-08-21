@@ -15,6 +15,7 @@ import Layout from './components/layout';
 import HomePage from './pages/HomePage';
 import ListCategoriePage from './pages/ImmobilierPage';
 import ImmobilierPage from './pages/ImmobilierPage';
+import { DetailAnnoncePage } from './pages/DetailAnoncePage';
 
 
 export default function App() {
@@ -27,6 +28,7 @@ export default function App() {
       <Route path="/" element={<Layout />}>
         <Route index element={<HomePage />} />
         <Route path="/immobiliers/:categorie?" element={<ImmobilierPage   />} />
+        <Route path="/detail_categories" element={<DetailAnnoncePage   />} />
         {/* <Route path="/automobiles/:categorie?" element={<AutomobilePage   />} />
         <Route path="/marches/:categorie?" element={<MarchePage   />} />
         <Route path="/travails/:categorie?" element={<TravailPage   />} />
