@@ -1,30 +1,37 @@
-const mongoose = require('mongoose');
+const { DataTypes } = require('sequelize');
+const sequelize = require('../config/database');
 
-const categorieSchema = new mongoose.Schema({
+const Categorie = sequelize.define('Categorie', {
+  id: {
+    type: DataTypes.UUID,
+    defaultValue: DataTypes.UUIDV4,
+    primaryKey: true
+  },
   designation: {
-    type: String,
-    required: true,
+    type: DataTypes.STRING,
+    allowNull: false,
     trim: true
   },
   parent_id: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Categorie',
-    default: null
+    type: DataTypes.UUID,
+    allowNull: true,
+    references: {
+      model: 'Categories', // Nom de la table référencée
+      key: 'id'
+    }
   },
   color: {
-    type: String,
-    required: true,
+    type: DataTypes.STRING,
+    allowNull: false,
     trim: true
   },
   icon: {
-    type: String,
-    required: true,
+    type: DataTypes.STRING,
+    allowNull: false,
     trim: true
   }
 }, {
   timestamps: true
 });
-
-const Categorie = mongoose.model('Categorie', categorieSchema);
 
 module.exports = Categorie;

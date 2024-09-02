@@ -1,20 +1,18 @@
-const mongoose = require('mongoose');
+const { Sequelize, DataTypes } = require('sequelize');
+const sequelize = new Sequelize('sqlite::memory:'); // Remplacez par votre configuration de base de données
 
-const zoneSchema = new mongoose.Schema({
-  nom: {
-    type: String,
-    required: true,
-    trim: true
+const Zone = sequelize.define('Zone', {
+  id: {
+    type: DataTypes.INTEGER,
+    autoIncrement: true,
+    primaryKey: true
   },
-  ville_id: {
-    type: String,
-    required: true,
-    trim: true
+  designation: {
+    type: DataTypes.STRING,
+    allowNull: false
   }
 }, {
-  timestamps: true
+  // options
 });
-
-const Zone = mongoose.model('Zone', zoneSchema);
 
 module.exports = Zone;

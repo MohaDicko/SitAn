@@ -11,12 +11,8 @@ import NouvelleAnnonce from '../components/NouvelleAnnonce';
 import SearchBar from '../components/layout/header/SearchBar';
 
 
-
-
 export default function HomePage() {
   
-  
-
   return (
     <>
     
