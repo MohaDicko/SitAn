@@ -1,81 +1,82 @@
-const Marque = require('../models/Marque');
+const MarqueService = require("../services/MarqueService");
 
-// Créer une nouvelle marque
-const create = async (req, res) => {
-  try {
-    const { image, designation } = req.body;
-    const newMarque = await Marque.create({ image, designation });
-    res.status(201).json(newMarque);
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-};
-
-// Récupérer toutes les marques
-const index = async (req, res) => {
-  try {
-    const marques = await Marque.findAll();
-    res.status(200).json(marques);
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-};
-
-// Récupérer une marque par ID
-const show = async (req, res) => {
-  try {
-    const { id } = req.params;
-    const marque = await Marque.findByPk(id);
-    if (marque) {
-      res.status(200).json(marque);
-    } else {
-      res.status(404).json({ error: 'Marque non trouvée' });
+const MarqueController = {
+  findAll: async (req, res, next) => {
+    try {
+      const {
+        page = 1,
+        limit = 3,
+        orderBy = "designation",
+        sortBy = "asc",
+        keyword,
+      } = req.query;
+      const data = await MarqueService.findAll({
+        page: +page ? +page : 1,
+        limit: +limit ? +limit : 3,
+        orderBy,
+        sortBy,
+        keyword,
+      });
+      return res.json({ success: true, data });
+    } catch (error) {
+      next(error);
     }
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-};
+  },
 
-// Mettre à jour une marque
-const update = async (req, res) => {
-  try {
-    const { id } = req.params;
-    const { image, designation } = req.body;
-    const [updated] = await Marque.update({ image, designation }, {
-      where: { id }
-    });
-    if (updated) {
-      const updatedMarque = await Marque.findByPk(id);
-      res.status(200).json(updatedMarque);
-    } else {
-      res.status(404).json({ error: 'Marque non trouvée' });
+  findById: async (req, res, next) => {
+    try {
+      const { id } = req.params;
+      const data = await MarqueService.findById(id);
+      return res.json({ success: true, data });
+    } catch (error) {
+      next(error);
     }
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-};
+  },
 
-// Supprimer une marque
-const destroy = async (req, res) => {
-  try {
-    const { id } = req.params;
-    const deleted = await Marque.destroy({
-      where: { id }
-    });
-    if (deleted) {
-      res.status(204).send();
-    } else {
-      res.status(404).json({ error: 'Marque non trouvée' });
+  create: async (req, res, next) => {
+    if (!req.file) {
+      // Handle case where file is not provided or is rejected by Multer
+      return res
+        .status(400)
+        .json({ error: "File upload failed or no file provided." });
     }
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
+    try {
+      const { designation } = req.body;
+      const data = await MarqueService.create({
+        designation: designation,
+        imagePath: req.file.path,
+      });
+      return res.json({ success: true, data });
+    } catch (error) {
+      fs.unlink(req.file.path, (unlinkErr) => {
+        if (unlinkErr) {
+          console.error("Failed to delete uploaded file:", unlinkErr);
+        }
+      });
+      next(error);
+    }
+  },
+
+  updateById: async (req, res, next) => {
+    try {
+      const { id } = req.params;
+      const { designation } = req.body;
+      const data = await MarqueService.updateById(id, { designation });
+      return res.json({ success: true, data });
+    } catch (error) {
+      next(error);
+    }
+  },
+
+  deleteById: async (req, res, next) => {
+    try {
+      const { id } = req.params;
+      const data = await MarqueService.deleteById(id);
+      return res.json({ success: true, data });
+    } catch (error) {
+      next(error);
+    }
+  },
 };
 
-module.exports = {
-  create,
-  index,
-  show,
-  update,
-  destroy
-};
+module.exports = MarqueController;

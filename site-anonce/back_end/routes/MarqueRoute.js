@@ -1,27 +1,37 @@
 const express = require("express");
 const {
+  findAll,
   create,
-  index,
-  show,
-  update,
-  destroy,
+  findById,
+  updateById,
+  deleteById,
 } = require("../controllers/MarqueController");
+const { ImageUpload } = require("../middleware/fileUploads/ImageUpload");
+const { createValidator } = require("../validators/MarqueValidator");
+const { validate } = require("../middleware/ValidatorMiddleware");
+const { validRole } = require("../middleware/AuthMiddleware");
 
 const router = express.Router();
 
 // Route pour créer une nouvelle marque
-router.post("/marques", create);
+router.post(
+  "/",
+  validRole(['admin']),
+  validate(createValidator),
+  ImageUpload.single("image"),
+  create
+);
 
 // Route pour récupérer toutes les marques
-router.get("/marques", index);
+router.get("/", findAll);
 
 // Route pour récupérer une marque par ID
-router.get("/marques/:id", show);
+router.get("/:id", findById);
 
 // Route pour mettre à jour une marque
-router.put("/marques/:id", update);
+router.put("/:id", updateById);
 
 // Route pour supprimer une marque
-router.delete("/marques/:id", destroy);
+router.delete("/:id", deleteById);
 
 module.exports = router;

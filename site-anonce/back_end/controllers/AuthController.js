@@ -5,11 +5,12 @@ const { Op } = require("sequelize");
 
 const secret = require(__dirname + '/../config/jwt.json')['secret-key']
 
-
 exports.login = async (req, res) => {
     
   const { phoneNumber, password } = req.body;
+
   try {
+
     const user = await User.findOne({
       where: {
         [Op.or]: [{ phoneNumber: phoneNumber }],
@@ -21,6 +22,7 @@ exports.login = async (req, res) => {
     }
 
     const passwordMatch = await bcrypt.compare(password, user.password);
+    
     if (!passwordMatch) {
       return res.status(401).json({ message: "Invalid email or password" });
     }
