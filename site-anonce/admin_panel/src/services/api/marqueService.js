@@ -1,52 +1,53 @@
+import axiosInstance from "../config/axiosInstance";
 
-import axiosInstance from '../config/axiosInstance';
-import handleError from '../config/errorHandler';
+const uri = "/marques";
 
 const marqueService = {
-  
-    getAll: async () => {
-        try {
-          const response = await axiosInstance.get(`/marques`);
-          return response.data;
-        } catch (error) {
-          handleError(error);
-        }
-      },
-  
-    get: async (id) => {
-    try {
-      const response = await axiosInstance.get(`/marques/${id}`);
-      return response.data;
-    } catch (error) {
-      handleError(error);
-    }
+  getAll: async () => {
+    const controller = new AbortController();
+    return {
+      request: axiosInstance.get(`${uri}`, { signal: controller.signal }),
+      controller: controller,
+    };
+  },
+
+  get: async (id) => {
+    const controller = new AbortController();
+    return {
+      request: axiosInstance.get(`${uri}/${id}`, { signal: controller.signal }),
+      controller: controller,
+    };
   },
 
   create: async (data) => {
-    try {
-      const response = await axiosInstance.post('/marques', data);
-      return response.data;
-    } catch (error) {
-      handleError(error);
-    }
+    const controller = new AbortController();
+    return {
+      request: axiosInstance.post(`${uri}`, data, {
+        signal: controller.signal,
+      }),
+      controller: controller,
+    };
   },
 
   update: async (id, data) => {
-    try {
-      const response = await axiosInstance.put(`/marques/${id}`, data);
-      return response.data;
-    } catch (error) {
-      handleError(error);
-    }
+    const controller = new AbortController();
+    return {
+      request: axiosInstance.put(`${uri}/${id}`, data, {
+        signal: controller.signal,
+      }),
+      controller: controller,
+    };
   },
 
   delete: async (userId) => {
-    try {
-      const response = await axiosInstance.delete(`/marques/${userId}`);
-      return response.data;
-    } catch (error) {
-      handleError(error);
-    }
+
+    const controller = new AbortController();
+    return {
+      request: axiosInstance.delete(`${uri}/${userId}`, {
+        signal: controller.signal,
+      }),
+      controller: controller,
+    };
   },
 };
 

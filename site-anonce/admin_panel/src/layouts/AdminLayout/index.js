@@ -116,7 +116,7 @@ export default function AdminLayout({ children }) {
           <Toolbar />
           <Container maxWidth="lg" sx={{ mt: 2, mb: 4 }}>
             {children}
-            <Copyright sx={{ pt: 4 }} />
+            {/* <Copyright sx={{ pt: 4 }} /> */}
           </Container>
         </Box>
       </Box>

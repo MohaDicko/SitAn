@@ -7,8 +7,9 @@ import {
   Typography,
 } from "@material-tailwind/react";
 import {
-  CreditCardIcon,
+  TableCellsIcon,
   LockClosedIcon,
+  MapIcon
 } from "@heroicons/react/24/solid";
 
 export default function SearchBar({search_categorie}) {
@@ -46,7 +47,7 @@ export default function SearchBar({search_categorie}) {
             <Input
              
               icon={
-                <CreditCardIcon className="absolute left-0 h-4 w-4 text-blue-gray-300" />
+                <TableCellsIcon className="absolute left-0 h-4 w-4 text-blue-gray-300" />
               }
               value={search_categorie}
               placeholder="Categories"
@@ -68,7 +69,7 @@ export default function SearchBar({search_categorie}) {
             <Input
               maxLength={19}
               icon={
-                <CreditCardIcon className="absolute left-0 h-4 w-4 text-blue-gray-300" />
+                <MapIcon className="absolute left-0 h-4 w-4 text-blue-gray-300" />
               }
               placeholder="Ou?"
               className="!border-t-blue-gray-200 focus:!border-t-gray-900"

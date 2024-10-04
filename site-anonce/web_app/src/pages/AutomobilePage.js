@@ -23,7 +23,7 @@ export default function AutomobilePage() {
           Accueil
         </a>
         <a href="/automobile" className={params.categorie ? "opacity-60" : ""}>
-          Immobiliers
+          Automobiles
         </a>
         {params.categorie ? (
           <a href={`/automobile/${params.categorie}`}>{params.categorie}</a>
